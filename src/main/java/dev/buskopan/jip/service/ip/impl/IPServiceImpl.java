@@ -15,7 +15,7 @@ public class IPServiceImpl implements IIPService {
 
     @Override
     public String getIp(HttpServletRequest request) {
-        String ip = request.getHeader("X-Forward-For");
+        String ip = request.getHeader("X-Forwarded-For");
         if (ip == null || ip.isEmpty()) {
             ip = request.getRemoteAddr();
             logger.info("Returning IP from request");
