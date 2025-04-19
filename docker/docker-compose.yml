@@ -1,0 +1,8 @@
+services:
+  easyapi:
+    container_name: easyip-api
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - 8080:8080
