@@ -15,7 +15,7 @@ import java.nio.file.StandardCopyOption;
 @Configuration
 public class GeoLiteConfig {
 
-    @Bean
+    @Bean(name = "cityDbReader", destroyMethod = "close")
     public DatabaseReader getCityDbReader() throws IOException {
         InputStream is = getClass().getClassLoader().getResourceAsStream("db/city.mmdb");
 
@@ -30,7 +30,7 @@ public class GeoLiteConfig {
         return new DatabaseReader.Builder(tempFile.toFile()).build();
     }
 
-    @Bean
+    @Bean(name = "asnDbReader", destroyMethod = "close")
     public DatabaseReader getASNDbReader() throws IOException {
         InputStream is = getClass().getClassLoader().getResourceAsStream("db/asn.mmdb");
 
@@ -43,5 +43,10 @@ public class GeoLiteConfig {
         Files.copy(is, tempFile, StandardCopyOption.REPLACE_EXISTING);
 
         return new DatabaseReader.Builder(tempFile.toFile()).build();
+    }
+
+    @Bean
+    public GeoLiteBundler geoLiteBundler() throws IOException {
+        return new GeoLiteBundler(getCityDbReader(), getASNDbReader());
     }
 }
