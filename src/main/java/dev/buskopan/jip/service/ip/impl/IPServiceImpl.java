@@ -1,6 +1,6 @@
-package dev.buskopan.jip.service.impl;
+package dev.buskopan.jip.service.ip.impl;
 
-import dev.buskopan.jip.service.IIPService;
+import dev.buskopan.jip.service.ip.IIPService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

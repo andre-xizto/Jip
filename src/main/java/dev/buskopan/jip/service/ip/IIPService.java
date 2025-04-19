@@ -1,4 +1,4 @@
-package dev.buskopan.jip.service;
+package dev.buskopan.jip.service.ip;
 
 import jakarta.servlet.http.HttpServletRequest;
 
